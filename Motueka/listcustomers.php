@@ -32,9 +32,9 @@ function searchResult(searchstr) {
          var ln    = mbrs[i]['lastname'];
       
          //concatenate our actions urls into a single string
-         var urls  = '<a href="viewcustomer.php?id='+mbrid+'">[view]</a>';
-             urls += '<a href="editcustomer.php?id='+mbrid+'">[edit]</a>';
-             urls += '<a href="deletecustomer.php?id='+mbrid+'">[delete]</a>';
+         var urls  = '<a href='+mbrid+'"viewcustomer.php?id=">[view]</a>';
+             urls += '<a href='+mbrid+'"editcustomer.php?id=">[edit]</a>';
+             urls += '<a href='+mbrid+'"deletecustomer.php?id=">[delete]</a>';
          
          //create a table row with three cells  
          tr = tbl.insertRow(-1);
@@ -56,7 +56,7 @@ function searchResult(searchstr) {
 <body>
 
 <h1>Customer List Search by Lastname</h1>
-<h2><a href='registercustomer.php'>[Create new Customer]</a><a href="index.php">[Return to main page]</a>
+<h2><a href='registercustomer.php'>[Create new Customer]</a><a href="../index.php">[Return to main page]</a>
 </h2>
 <form>
   <label for="lastname">Lastname: </label>
