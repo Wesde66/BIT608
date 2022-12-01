@@ -47,7 +47,7 @@ function searchResult(searchstr) {
         }
     }
   }
-  //call our php file that will look for a customer or customers matchign the seachstring
+  //call our php file that will look for a customer or customers matching the search string
   xmlhttp.open("GET","customersearch.php?sq="+searchstr,true);
   xmlhttp.send();
 }
@@ -56,7 +56,7 @@ function searchResult(searchstr) {
 <body>
 
 <h1>Customer List Search by Lastname</h1>
-<h2><a href='registercustomer.php'>[Create new Customer]</a><a href="index.php">[Return to main page]</a>
+<h2><a href='registercustomer.php'>[Create new Customer]</a><a href="../index.php">[Return to main page]</a>
 </h2>
 <form>
   <label for="lastname">Lastname: </label>

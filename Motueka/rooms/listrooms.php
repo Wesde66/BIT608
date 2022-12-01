@@ -1,7 +1,7 @@
 <?php
 include "header.php";
 include "menu.php";
-include "checksession.php";
+include "check_session.php";
 loginStatus(); //show the current login status
 
 echo '<div id="site_content">';

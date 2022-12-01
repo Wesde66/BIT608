@@ -3,7 +3,7 @@
  <body>
 
 <?php
-include "cleaninput.php";
+include "clean_input.php";
 
 //the data was sent using a form therefore we use the $_POST instead of $_GET
 //check if we are saving data first by checking if the submit button exists in the array
@@ -53,7 +53,7 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
 }
 ?>
 <h1>Add a new room</h1>
-<h2><a href='listrooms.php'>[Return to the room listing]</a><a href='index.php'>[Return to the main page]</a></h2>
+<h2><a href='listrooms.php'>[Return to the room listing]</a><a href='../index.php'>[Return to the main page]</a></h2>
 
 <form method="POST" action="addroom.php">
   <p>

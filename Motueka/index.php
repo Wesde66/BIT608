@@ -1,16 +1,16 @@
 <?php
-include "header.php";
-include "checksession.php";
+include "re_used_file/header.php";
+include "re_used_file/check_session.php";
 
-include "menu.php";
+include "re_used_file/menu.php";
 loginStatus(); //show the current login status
 
-echo '<div id="site_content">';
-include "sidebar.php";
 
-echo '<div id="content">';
-include "content.php";
 
-echo '</div></div>';
-include "footer.php";
+
+
+
+
+
+include "re_used_file/footer.php";
 ?>

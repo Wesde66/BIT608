@@ -1,6 +1,6 @@
 <?php
 include "header.php";
-include "checksession.php";
+include "check_session.php";
 
 include "menu.php";
 loginStatus(); //show the current login status
