@@ -9,7 +9,7 @@
       <div id="menubar">
         <ul id="menu">
           <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
-          <li class="selected"><a href="/bnb">Home</a></li>
+          <li class="selected"><a href="index.php">Home</a></li>
           <li><a href="listrooms.php">Rooms</a></li>
           <li><a href="index.php">blank</a></li>
           <li><a href="registercustomer.php">Register</a></li>
