@@ -11,10 +11,7 @@ include "sidebar.php";
 echo '<div id="content">';
 include "content.php";
 ?>
-<div id="privacy_statement" style="
-                                    margin-left: 25%;
-                                    margin-top: 10%;
-                                    margin-right: 25%;">
+<div id="privacy_statement" style="margin-left: 8%; margin-top: 5%; margin-right: 3%;">
 
         <h1>Privacy Statement</h1>
         <p> We collect personal information from you, including information about your:</p>
