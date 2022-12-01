@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         exit;
     } 
 }
-//the data was sent using a formtherefore we use the $_POST instead of $_GET
+//the data was sent using a form therefore we use the $_POST instead of $_GET
 //check if we are saving data first by checking if the submit button exists in the array
 if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] == 'Update')) {     
 //validate incoming data - only the first field is done for you in this example - rest is up to you do
@@ -68,7 +68,7 @@ if ($rowcount > 0) {
 
 ?>
 <h1>Room Details Update</h1>
-<h2><a href='../listrooms.php'>[Return to the room listing]</a><a href='../index.php'>[Return to the main page]</a></h2>
+<h2><a href='listrooms.php'>[Return to the room listing]</a><a href='index.php'>[Return to the main page]</a></h2>
 
 <form method="POST" action="editroom.php">
   <input type="hidden" name="id" value="<?php echo $id;?>">

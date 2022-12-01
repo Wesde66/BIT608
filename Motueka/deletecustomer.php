@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     } 
 }
 
-//the data was sent using a formtherefore we use the $_POST instead of $_GET
+//the data was sent using a form therefore we use the $_POST instead of $_GET
 //check if we are saving data first by checking if the submit button exists in the array
 if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] == 'Delete')) {     
     $error = 0; //clear our error flag
@@ -62,7 +62,7 @@ $result = mysqli_query($db_connection,$query);
 $rowcount = mysqli_num_rows($result); 
 ?>
 
-<h2><a href='listcustomers.php'>[Return to the Customer listing]</a><a href='../index.php'>[Return to the main page]</a></h2>
+<h2><a href='listcustomers.php'>[Return to the Customer listing]</a><a href='index.php'>[Return to the main page]</a></h2>
 <?php
 
 //makes sure we have the customer

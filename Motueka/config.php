@@ -1,6 +1,6 @@
 <?php
-//MySQL credentails
+//MySQL credentials
+define("DBHOST","localhost");
 define("DBUSER","root");
 define("DBPASSWORD","root");
-define("DBDATABASE","bnb");
-?>
+define("DBDATABASE","motueka");

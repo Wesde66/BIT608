@@ -11,7 +11,7 @@ function searchResult(searchstr) {
   xmlhttp.onreadystatechange=function() {
     if (this.readyState==4 && this.status==200) {
     //take JSON text from the server and convert it to JavaScript objects
-    //mbrs will become a two dimensional array of our customers much like 
+    //mbrs will become a two-dimensional array of our customers much like
     //a PHP associative array
       var mbrs = JSON.parse(this.responseText);              
       var tbl = document.getElementById("tblcustomers"); //find the table in the HTML
@@ -56,7 +56,7 @@ function searchResult(searchstr) {
 <body>
 
 <h1>Customer List Search by Lastname</h1>
-<h2><a href='registercustomer.php'>[Create new Customer]</a><a href="../index.php">[Return to main page]</a>
+<h2><a href='registercustomer.php'>[Create new Customer]</a><a href="index.php">[Return to main page]</a>
 </h2>
 <form>
   <label for="lastname">Lastname: </label>

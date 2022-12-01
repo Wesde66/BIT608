@@ -33,7 +33,7 @@ $result = mysqli_query($db_connection, $query);
 $rowcount = mysqli_num_rows($result); 
 ?>
 <h1>Room Details View</h1>
-<h2><a href='../listrooms.php'>[Return to the Room listing]</a><a href='../index.php'>[Return to the main page]</a></h2>
+<h2><a href='listrooms.php'>[Return to the Room listing]</a><a href='index.php'>[Return to the main page]</a></h2>
 
 <?php
 //makes sure we have the Room

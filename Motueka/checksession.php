@@ -22,7 +22,7 @@ return true;
        return TRUE;
     else {
        $_SESSION['URI'] = 'http://localhost'.$_SERVER['REQUEST_URI']; //save current url for redirect     
-       header('Location: http://localhost/bnb/login.php', true, 303);       
+       header('Location: http://localhost/Motueka/login.php', true, 303);
     }       
 }
 
@@ -41,7 +41,7 @@ function login($id,$username) {
    if ($_SESSION['loggedin'] == 0 and !empty($_SESSION['URI']))        
         $uri = $_SESSION['URI'];          
    else { 
-     $_SESSION['URI'] =  'http://localhost/bnb/listcustomers.php';         
+     $_SESSION['URI'] =  'http://localhost/Motueka/listcustomers.php';
      $uri = $_SESSION['URI'];           
    }  
 
@@ -58,6 +58,6 @@ function logout(){
   $_SESSION['userid'] = -1;        
   $_SESSION['username'] = '';
   $_SESSION['URI'] = '';
-  header('Location: http://localhost/bnb/login.php', true, 303);    
+  header('Location: http://localhost/Motueka/login.php', true, 303);
 }
 ?>
