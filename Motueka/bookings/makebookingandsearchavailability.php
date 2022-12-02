@@ -1,14 +1,11 @@
 <?php
-include "header.php";
-include "menu.php";
-include "check_session.php";
-loginStatus(); //show the current login status
+include "../re_used_file/header.php";
+include "../re_used_file/check_session.php";
+include "../re_used_file/menu.php";
 
-echo '<div id="site_content">';
-include "sidebar.php";
 
-echo '<div id="content">';
 ?>
+                <section id="Make_and_search_booking">
                     <h3>Make a booking</h3>
                     <h4>
                         <a href="currentbookings.php">[Return to bookings view]</a>
@@ -48,7 +45,7 @@ echo '<div id="content">';
 
                         </form>
                     </div>
-                    <section id="Search_Available">
+
                         <h3>Search for room availability</h3><br>
                         <form action="makebookingandsearchavailability.php">
                             <label for="Start_date">Start date:</label>
@@ -64,12 +61,12 @@ echo '<div id="content">';
                             </table>
                         </div>
 
-                    </section>
+                </section>
 <script>
 
 </script>
 <?php
-echo '</div></div>';
-require_once "footer.php";
+
+include "../re_used_file/footer.php";
 ?>
 
