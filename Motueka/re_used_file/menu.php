@@ -43,9 +43,9 @@
                 </div>
             </div>
 
-
+                <?php loginStatus(); ?>
+                <a href="../Motueka/login.php" class="w3-bar-item w3-button w3-right ">Logout</a>
         </div>
       </div>
     </div>
 
-    <h2>Make yourself at home is our slogan. We offer some of the best beds on the East Coast. Sleep well and rest well.</h2>

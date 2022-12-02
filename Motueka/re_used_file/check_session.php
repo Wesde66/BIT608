@@ -30,9 +30,9 @@ return true;
 function loginStatus() {
     $un = $_SESSION['username'];
     if ($_SESSION['loggedin'] == 1)     
-        echo "<h2 style='color: darkgray; text-align-last: end; margin-right: 20%; font-size: small;'>Logged in as $un</h2>";
+        echo "<p style='float: right; margin-top: 7px; margin-right: 25px;'>Logged in as $un</p>";
     else
-        echo "<h2 style='color: darkgray; text-align-last: end; margin-right: 20%; font-size: small;'>Logged out</h2>";
+        echo "<p style='float: right; margin-top: 7px; margin-right: 25px;'>Logged out</p>";
 }
 
 //log a user in
