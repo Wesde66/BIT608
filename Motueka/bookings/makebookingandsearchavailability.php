@@ -5,6 +5,30 @@ include "../re_used_file/menu.php";
 
 
 ?>
+
+<script>
+    //this function is for the date and time picker
+    var Checkindate = document.getElementsByName("Checkindate");
+    $( function() {
+        $( Checkindate ).datepicker({
+            numberOfMonths: 2,
+            showButtonPanel: true,
+            dateFormat: 'yy-mm-dd',
+            minDate: 'today',
+
+        });
+    } );
+    var Checkoutdate = document.getElementsByName("Checkoutdate");
+    $( function() {
+        $( Checkoutdate ).datepicker({
+            numberOfMonths: 2,
+            showButtonPanel: true,
+            dateFormat: 'yy-mm-dd',
+            minDate: 'today',
+
+        });
+    } );
+</script>
                 <section id="Make_and_search_booking">
                     <h3>Make a booking</h3>
                     <h4>
@@ -62,9 +86,7 @@ include "../re_used_file/menu.php";
                         </div>
 
                 </section>
-<script>
 
-</script>
 <?php
 
 include "../re_used_file/footer.php";

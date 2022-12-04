@@ -11,12 +11,16 @@
         <meta name="keywords" content="Bed & Breakfast" />
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
         <!--Local css style link-->
-        <link rel="stylesheet" href="../Motueka/style/style.css"/>
+        <link rel="stylesheet" href="http://localhost/Motueka/style/style.css"/>
         <!--W3-schools link for visual-->
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
         <!--Local java script functions link-->
-        <script type="text/javascript" src="../../functions.js"></script>
+        <script type="text/javascript" src="http://localhost/functions.js"></script>
         <!--Javascript links-->
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
 
 </head>

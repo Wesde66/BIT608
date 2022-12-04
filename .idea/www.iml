@@ -9,5 +9,7 @@
     <orderEntry type="library" name="jquery-3.6.0" level="application" />
     <orderEntry type="library" name="jquery-ui" level="application" />
     <orderEntry type="library" name="w3" level="application" />
+    <orderEntry type="library" name="style" level="application" />
+    <orderEntry type="library" name="functions" level="application" />
   </component>
 </module>
