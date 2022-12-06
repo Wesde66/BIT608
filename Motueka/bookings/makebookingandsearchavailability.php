@@ -75,14 +75,15 @@ include "../re_used_file/menu.php";
 
 <body>
 <div>
-    <h1>Please complete the below to make a booking</h1>
-
+    <h2>Please complete the below to make a booking</h2>
+    <h4><a href="http://localhost/Motueka/bookings/currentbookings.php">[Current Bookings]</a><a href="http://localhost/index.php">[Return to main page]</a></h4>
+    <br>
+    <p>This booking is for user <?php echo $_SESSION['username']; ?></p>
 </div>
 
 
-<h1>Search for available rooms</h1>
-<h2><a href="http://localhost/Motueka/bookings/currentbookings.php">[Current Bookings]</a><a href="http://localhost/index.php">[Return to main page]</a>
-</h2>
+<h2>Search for available rooms</h2>
+
 <form>
     <label for="checkin">Checkin date: </label>
 
