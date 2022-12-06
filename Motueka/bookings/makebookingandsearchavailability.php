@@ -44,6 +44,12 @@ include "../re_used_file/menu.php";
                     tabCell.innerHTML = des; //firstname
                     //var tabCell = tr.insertCell(-1);
                     //tabCell.innerHTML = urls; //action URLS
+                    var x = document.getElementById("RoomName");
+                    var option = document.createElement("option");
+                    option.value = roomname;
+                    option.text = roomname;
+                    x.add(option);
+
                 }
             }
         }
@@ -81,8 +87,8 @@ include "../re_used_file/menu.php";
     <p>This booking is for user <?php echo $_SESSION['username']; ?></p>
     <section>
         <h4>Room selection</h4>
-        <select name="RoomName" id="RoomName">
-        <option disabled selected value> -- select a room -- </option>
+        <select name="RoomNameAvl" id="RoomName" title="RoomName">
+        <option id="roomOption" disabled selected value> -- select a room -- </option>
         </select>
     </section>
 </div>
