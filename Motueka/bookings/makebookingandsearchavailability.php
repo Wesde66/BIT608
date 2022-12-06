@@ -88,47 +88,51 @@ include "../re_used_file/menu.php";
 </script>
 
 <body>
-<div>
+<div id="make_a_booking" class="w3-container">
     <h2>Please complete the below to make a booking</h2>
     <h4><a href="http://localhost/Motueka/bookings/currentbookings.php">[Current Bookings]</a><a href="http://localhost/Motueka/index.php">[Return to main page]</a></h4>
     <br>
+    <p>Please search for available rooms before making a booking</p>
+
     <p>This booking is for user <?php echo $_SESSION['username']; ?></p>
     <section>
         <h4>Room selection</h4>
-        <select name="RoomNameAvl" id="RoomName" title="RoomName">
+        <select name="RoomNameAvl" id="RoomName" title="RoomName" style="margin-bottom: 1%">
         <option id="roomOption" disabled selected value> -- select a room -- </option>
         </select>
         <br>
-        <label for="stdate">Checkin Date: </label><input type="text" id="stdate" >
+        <label for="stdate">Checkin Date: </label><input type="text" id="stdate" style="margin-left: 1%;" >
         <label for="endate">Checkout Date: </label><input type="text" id="endate" ><br>
-        <label for="mobile">Mobile number</label><input type="tel" id="mobile">
+        <label for="mobile">Mobile number: </label><input type="tel" id="mobile" style="margin-top: 1%">
         <br>
-        <label for="bookingsExtra">Booking extras :</label><br>
-        <textarea id="bookingsExtra" placeholder="Please let us know if you require anything extra" rows="5" cols="60"></textarea>
+        <label for="bookingsExtra" >Booking extras :</label><br>
+        <textarea id="bookingsExtra" style="margin-bottom: 1%" placeholder="Please let us know if you require anything extra" rows="5" cols="60"></textarea>
         <br>
-        <button name="Submit" type="button" id="Submit">Confirm booking</button>
+        <button name="Submit" type="button" id="Submit" style="margin-right: 3%">Confirm booking</button>
         <button name="Cancel" type="button" value="Reload Page" onclick="window.location.reload();" id="Cancel">Clear booking info</button>
     </section>
 </div>
 
+    <!--This section will search for available rooms between dates selected. It will then populate the above
+        text boxes with the dates searched and also populate the drop-down for the available rooms.-->
+<div id="search_for_rooms" class="w3-container">
+    <h2>Search for available rooms</h2>
 
+    <form>
+        <label for="checkin">Checkin date: </label>
 
-<h2>Search for available rooms</h2>
+        <input class="startDate" title="checkin" name="startdate" id="sdate" placeholder="2000-10-20">
+        <label for="checkout">Checkout date: </label>
+        <input title="checkout" id="edate" name="enddate" placeholder="2000-10-20">
 
-<form>
-    <label for="checkin">Checkin date: </label>
+        <button type="button" name="BTN" onclick="searchResult(this.value)" >Fetch available rooms</button>
 
-    <input class="startDate" title="checkin" name="startdate" id="sdate" placeholder="2000-10-20">
-    <label for="checkout">Checkout date: </label>
-    <input title="checkout" id="edate" name="enddate" placeholder="2000-10-20">
+    </form>
+    <table id="tblcustomers" class="w3-table-all" style="margin-bottom: 3%; margin-top: 1%;">
+        <thead><tr><th>Room Name</th><th>Room type</th><th>Description</th></tr></thead>
 
-    <button type="button" name="BTN" onclick="searchResult(this.value)" >Fetch available rooms</button>
-
-</form>
-<table id="tblcustomers" border="1">
-    <thead><tr><th>Room Name</th><th>Room type</th><th>Description</th></tr></thead>
-
-</table>
+    </table>
+</div>
 </body>
 </html>
 
