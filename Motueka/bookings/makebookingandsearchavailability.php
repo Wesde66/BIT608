@@ -79,7 +79,14 @@ include "../re_used_file/menu.php";
     <h4><a href="http://localhost/Motueka/bookings/currentbookings.php">[Current Bookings]</a><a href="http://localhost/index.php">[Return to main page]</a></h4>
     <br>
     <p>This booking is for user <?php echo $_SESSION['username']; ?></p>
+    <section>
+        <h4>Room selection</h4>
+        <select name="RoomName" id="RoomName">
+        <option disabled selected value> -- select a room -- </option>
+        </select>
+    </section>
 </div>
+
 
 
 <h2>Search for available rooms</h2>
