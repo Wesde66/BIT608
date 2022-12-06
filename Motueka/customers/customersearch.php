@@ -1,6 +1,6 @@
 <?php
 //Our customer search/filtering engine
-include "config.php"; //load in any variables
+include "../re_used_file/config.php"; //load in any variables
 $db_connection = mysqli_connect(DBHOST, DBUSER, DBPASSWORD, DBDATABASE) or die();
 
 //do some simple validation to check if sq contains a string
