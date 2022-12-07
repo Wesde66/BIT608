@@ -2,6 +2,12 @@
 include "../re_used_file/header.php";
 include "../re_used_file/check_session.php";
 include "../re_used_file/menu.php";
+?>
+    <div class="w3-container w3-border-bottom">
+        <h3>List of all bookings</h3>
+    </div>
+<?php
+
 
 include "../re_used_file/config.php"; //load in any variables
 $DBC = mysqli_connect(DBHOST, DBUSER, DBPASSWORD, DBDATABASE);
@@ -12,7 +18,7 @@ if (mysqli_connect_errno()) {
     echo "Error: Unable to connect to MySQL. ".mysqli_connect_error() ;
     exit; //stop processing the page further
 }
-
+//We check to see if admin is logged in. We then display all bookings
 if ($_SESSION['userid'] === 1){
     //Create admin list of bookings
     $query = "SELECT bookingID,checkIn, checkout, contactNum, extras, roomReview, roomID, customerID FROM bookings ORDER BY checkIn";
@@ -45,6 +51,7 @@ if ($_SESSION['userid'] === 1){
 
     } else echo "<h2>No rooms found!</h2>";
 }else{
+    //If admin is not logged in we get the customers ID, and we list bookings on for that ID
     $customerID = $_SESSION['customerID'];
     //create customers list of bookings
     $query = "SELECT bookingID,checkIn, checkout, contactNum, extras, roomReview, roomID,customerID FROM bookings WHERE customerID = '$customerID'";
@@ -79,15 +86,6 @@ if ($_SESSION['userid'] === 1){
 
 ?></table>
 
-    <section id="body_list_all_bookings">
-        <div class="w3-container w3-border-bottom" style="margin-top: 2%" id="body_list_all_bookings_heading">
-            <h3>List of all bookings</h3>
-        </div>
-
-
-        </div>
-    </div>
-    </section>
 
 
 <?php
