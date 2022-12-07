@@ -3,7 +3,7 @@ session_start();
 
 //overrides for development purposes only - comment this out when testing the login
 $_SESSION['loggedin'] = 1;     
-$_SESSION['userid'] = 1; //this is the ID for the admin user  
+$_SESSION['userid'] = 0; //this is the ID for the admin user
 $_SESSION['username'] = 'Test';
 $_SESSION['customerID'] = 24;
 //end of overrides
