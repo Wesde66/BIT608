@@ -7,6 +7,7 @@ include "../re_used_file/menu.php";
 ?>
 
 <script>
+    //Search for available rooms code.
     function searchResult() {
         //Get the date to be sent from the input fields
        var st = document.getElementById('sdate').value;
@@ -63,6 +64,7 @@ include "../re_used_file/menu.php";
         xmlhttp.send();
 
     }
+    //date picker code
     $( function() {
         var st = document.getElementsByName('startdate');
         $( st ).datepicker({
@@ -84,8 +86,88 @@ include "../re_used_file/menu.php";
         });
     } );
 
-
 </script>
+<?php
+include '../re_used_file/clean_input.php';
+include '../re_used_file/config.php';
+//This code is used to store the booking in the database
+if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] == 'Make_Booking')){
+
+    $DBC = mysqli_connect(DBHOST, DBUSER, DBPASSWORD, DBDATABASE);
+
+    if (mysqli_connect_errno()) {
+        echo "Error: Unable to connect to MySQL. ".mysqli_connect_error() ;
+        exit; //stop processing the page further
+    }
+    //Variables for the database
+    $customerID = $_SESSION['customerID'];
+    $roomID = " ";
+    $extras = " ";
+    $contactNum = " ";
+    $checkout = " ";
+    $checkin = " ";
+    $error = 0;
+
+    //Get room ID of selected room.
+    if(isset($_POST['RoomNameAvl']) and !empty($_POST['RoomNameAvl'])){
+        $selectedRoom = $_POST['RoomNameAvl'];
+        $selectedRoom = cleanInput($selectedRoom);
+        $roomQuery = "SELECT roomID FROM room WHERE roomname = '$selectedRoom'";
+        $result = $DBC->query($roomQuery);
+        $row = mysqli_fetch_assoc($result);
+        $roomID = $row['roomID'];
+    }else{
+        $roomID = " ";
+        $error++;
+    }
+    //Get extras details
+    if (isset($_POST['bookingsExtra'])){
+        $extras = $_POST['bookingsExtra'];
+        $extras = cleanInput($extras);
+    }else{
+        $extras = " ";
+        $error++;
+    }
+    //Get contact number
+    if(isset($_POST['mobile']) and !empty($_POST['mobile'])){
+        $contact = $_POST['mobile'];
+        if (preg_match('/^[0-9]*$/',$contact )){
+            $contact = cleanInput($contact);
+            $contactNum = $contact;
+        }else{
+            $contactNum = " ";
+            $error++;
+        }
+    }
+    if(isset($_POST['stdate']) and !empty($_POST['stdate'])){
+        $checkin =$_POST['stdate'];
+        //Make sure those dates are in the correct format
+        $checkin = date('Y-m-d', strtotime(($checkin)));
+    }else{
+        $checkin = " ";
+        $error++;
+    }
+    if(isset($_POST['endate']) and !empty($_POST['endate'])){
+        $checkout =$_POST['endate'];
+        //Make sure those dates are in the correct format
+        $checkout = date('Y-m-d', strtotime(($checkout)));
+    }else{
+        $checkout = " ";
+        $error++;
+    }
+    if ($error === 0){
+        $sql ="INSERT INTO bookings( checkIn, checkout, contactNum, extras, roomID, customerID)
+                VALUES ('$checkin','$checkout','$contactNum','$extras','$roomID','$customerID')";
+        if ($DBC->query($sql)=== TRUE){
+            echo "Booking was successfully";
+        }else{
+            echo "Error: ".$sql."<br>".$DBC->error;
+        }
+        $DBC->close();
+    }
+
+}
+?>
 
 <body>
 <div id="make_a_booking" class="w3-container">
@@ -96,20 +178,22 @@ include "../re_used_file/menu.php";
 
     <p>This booking is for user <?php echo $_SESSION['username']; ?></p>
     <section>
-        <h4>Room selection</h4>
-        <select name="RoomNameAvl" id="RoomName" title="RoomName" style="margin-bottom: 1%">
-        <option id="roomOption" disabled selected value> -- select a room -- </option>
-        </select>
-        <br>
-        <label for="stdate">Checkin Date: </label><input type="text" id="stdate" style="margin-left: 1%;" >
-        <label for="endate">Checkout Date: </label><input type="text" id="endate" ><br>
-        <label for="mobile">Mobile number: </label><input type="tel" id="mobile" style="margin-top: 1%">
-        <br>
-        <label for="bookingsExtra" >Booking extras :</label><br>
-        <textarea id="bookingsExtra" style="margin-bottom: 1%" placeholder="Please let us know if you require anything extra" rows="5" cols="60"></textarea>
-        <br>
-        <button name="Submit" type="button" id="Submit" style="margin-right: 3%">Confirm booking</button>
-        <button name="Cancel" type="button" value="Reload Page" onclick="window.location.reload();" id="Cancel">Clear booking info</button>
+        <form action="makebookingandsearchavailability.php" id="Make_a_booking_form" method="post">
+            <h4>Room selection</h4>
+            <select name="RoomNameAvl" id="RoomName" title="RoomName" style="margin-bottom: 1%" required>
+                <option id="roomOption" disabled selected value> -- select a room -- </option>
+            </select>
+            <br>
+            <label for="stdate">Checkin Date: </label><input type="text" id="stdate" name="stdate" style="margin-left: 1%;" required readonly>
+            <label for="endate">Checkout Date: </label><input type="text" id="endate" name="endate" required readonly><br>
+            <label for="mobile">Mobile number: </label><input type="tel" id="mobile" name="mobile" style="margin-top: 1%" required >
+            <br>
+            <label for="bookingsExtra" >Booking extras :</label><br>
+            <textarea id="bookingsExtra" name="bookingsExtra" style="margin-bottom: 1%" placeholder="Please let us know if you require anything extra" rows="5" cols="60"></textarea>
+            <br>
+            <button name="submit" type="submit" id="submit" value="Make_Booking" style="margin-right: 3%">Confirm booking</button>
+            <button name="Cancel" type="button" value="Reload Page" onclick="window.location.reload();" id="Cancel">Clear booking info</button>
+        </form>
     </section>
 </div>
 
