@@ -35,7 +35,7 @@ if ($_SESSION['userid'] === 1){
                     <th>Contact number</th>
                     <th>Extras required</th>
                     <th>Room review</th>
-                    <th>Room review</th>
+                    <th>Action</th>
                 </tr>
 <?php
     //makes sure we have rooms
@@ -68,7 +68,7 @@ if ($_SESSION['userid'] === 1){
                     <th>Contact number</th>
                     <th>Extras required</th>
                     <th>Room review</th>
-                    <th>Room review</th>
+                    <th>Action</th>
                 </tr>
 <?php
         if ($rowcounts > 0){
