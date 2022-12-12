@@ -4,8 +4,10 @@
 
 
 <?php
+include "../re_used_file/check_session.php";
 include "../re_used_file/config.php"; //load in any variables
 include "../re_used_file/clean_input.php";
+
 
 $db_connection = mysqli_connect(DBHOST, DBUSER, DBPASSWORD, DBDATABASE);
 $error=0;
@@ -40,7 +42,7 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
 
     } else {
         $error++; //bump the error flag
-        $msg .= 'Invalid room ID '; //append error message
+        $msg .= 'Invalid check in date '; //append error message
         $id = 0;
     }
     if (isset($_POST['Checkoutdate']) and !empty($_POST['Checkoutdate'])) {
@@ -48,14 +50,14 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
 
     } else {
         $error++; //bump the error flag
-        $msg .= 'Invalid room ID '; //append error message
+        $msg .= 'Invalid check out date '; //append error message
         $id = 0;
     }
     if (isset($_POST['MobileNumber']) and !empty($_POST['MobileNumber']) and is_integer(intval($_POST['MobileNumber']))) {
         $MobileNumber = cleanInput($_POST['MobileNumber']);
     } else {
         $error++; //bump the error flag
-        $msg .= 'Invalid room ID '; //append error message
+        $msg .= 'Invalid contact number '; //append error message
         $id = 0;
     }
     if (isset($_POST['RoomId']) and !empty($_POST['RoomId']) and is_integer(intval($_POST['RoomId']))) {
@@ -69,14 +71,14 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
         $extras = cleanInput($_POST['extras']);
     } else {
         $error++; //bump the error flag
-        $msg .= 'Invalid room ID '; //append error message
+        $msg .= 'Invalid extras '; //append error message
         $id = 0;
     }
     if (isset($_POST['roomReview']) and !empty($_POST['roomReview'])) {
         $roomReview = cleanInput($_POST['roomReview']);
     } else {
         $error++; //bump the error flag
-        $msg .= 'Invalid room ID '; //append error message
+        $msg .= 'Invalid room review '; //append error message
         $id = 0;
     }
 
@@ -98,8 +100,11 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
         echo "<h2>$msg</h2>";
     }
 }
-//locate the room to edit by using the roomID
-//we also include the room ID in our form for sending it back for saving the data
+?>
+
+<?php
+
+
 $query = 'SELECT * FROM bookings WHERE bookingID ='.$id;
 $result = mysqli_query($db_connection,$query);
 $rowcount = mysqli_num_rows($result);
@@ -111,11 +116,12 @@ if ($rowcount > 0) {
 <h4><a href='currentbookings.php'>[Return to current bookings]</a><a href='http://localhost/Motueka/index.php'>[Return to the main page]</a></h4>
 <form class="w3-container" action="editbooking.php" name="Edit_booking_form" method="post">
     <input type="hidden" name="id" value="<?php echo $id;?>">
+
     <div class="row">
         <div class="mb-3 mt-3">
             <p>
                 <label class="form-label" for="RoomId">Room number: </label>
-                <input style="margin-left: 3%;" class="form-control-sm" type="text" id="RoomId" name="RoomId" value="<?php echo $row['roomID']; ?>" >
+                <input style="margin-left: 3%;" class="form-control-sm" type="text" id="RoomId" name="RoomId" value="<?php echo $row['roomID'];?> "  >
             </p>
         </div>
     </div>
@@ -123,13 +129,14 @@ if ($rowcount > 0) {
         <div class="col">
             <p>
                 <label class="form-label" for="Checkindate">Check in date: </label>
-                <input style="margin-left: 11%;" class="form-control-sm" type="text" id="Checkindate" name="Checkindate" value="<?php echo $row['checkIn']; ?>"  >
+                <input style="margin-left: 11%;" class="form-control-sm" type="text" id="Checkindate" name="Checkindate" value="<?php echo $row['checkIn'];?>"  >
             </p>
         </div>
         <div class="col">
             <p>
+
                 <label class="form-label" for="Checkoutdate">Check out date: </label>
-                <input class="form-control-sm" type="text" id="Checkoutdate" name="Checkoutdate" value="<?php echo $row['checkout']; ?>"  >
+                <input class="form-control-sm" type="text" id="Checkoutdate" name="Checkoutdate" value="<?php echo $row['checkout'];?>">
             </p>
         </div>
         <div class="col">
@@ -166,8 +173,8 @@ if ($rowcount > 0) {
         <div class="col">
             <input type="submit" name="submit" value="Update">
         </div>
-        <div class="col">
-            <button class="btn-outline-dark" value="cancel">Cancel update</button>
+        <div class="col"><br>
+            <a href='http://localhost/Motueka/bookings/currentbookings.php'>[Cancel]</a>
         </div>
     </div>
     <?php
@@ -178,5 +185,6 @@ else
 }
 mysqli_close($db_connection); //close the connection once done
 ?>
+
 </body>
 </html>
