@@ -1,17 +1,13 @@
 <?php
-include "header.php";
-include "menu.php";
-include "check_session.php";
-loginStatus(); //show the current login status
-
-echo '<div id="site_content">';
-include "sidebar.php";
-
-echo '<div id="content">';
+include "../re_used_file/check_session.php";
+include "../re_used_file/header.php";
+include "../re_used_file/menu.php";
 
 
-include "config.php"; //load in any variables
-$DBC = mysqli_connect("127.0.0.1", DBUSER, DBPASSWORD, DBDATABASE);
+
+include "../re_used_file/config.php"; //load in any variables
+include "../re_used_file/clean_input.php";; //load in any variables
+$DBC = mysqli_connect(DBHOST, DBUSER, DBPASSWORD, DBDATABASE);
 
 //insert DB code from here onwards
 //check if the connection was good
@@ -53,7 +49,7 @@ mysqli_close($DBC); //close the connection once done
 
 
 echo '</div></div>';
-require_once "footer.php";
+require_once "../re_used_file/footer.php";
 ?>
 
   

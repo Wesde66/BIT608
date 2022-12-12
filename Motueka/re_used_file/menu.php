@@ -14,8 +14,8 @@
                     <a class="w3-bar-item w3-button" href="http://localhost/Motueka/bookings/makebookingandsearchavailability.php">Make booking</a>
                     <a class="w3-bar-item w3-button" href="http://localhost/Motueka/bookings/makebookingandsearchavailability.php">Search for availability</a>
                     <a class="w3-bar-item w3-button" href="http://localhost/Motueka/bookings/currentbookings.php">Current bookings</a>
-                    <a class="w3-bar-item w3-button" href="http://localhost/Motueka/bookings/editbooking.php">Edit bookings</a>
-                    <a class="w3-bar-item w3-button" href="http://localhost/Motueka/bookings/delete_bookings.php">Delete a booking</a>
+                    <a class="w3-bar-item w3-button" href="http://localhost/Motueka/bookings/currentbookings.php">Edit bookings</a>
+                    <a class="w3-bar-item w3-button" href="http://localhost/Motueka/bookings/currentbookings.php">Delete a booking</a>
                 </div>
             </div>
             <!--This is the dropdown for Rooms section-->
