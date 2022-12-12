@@ -5,6 +5,8 @@
 
 <?php
 include "../re_used_file/check_session.php";
+include "../re_used_file/header.php";
+include "../re_used_file/menu.php";
 include "../re_used_file/config.php"; //load in any variables
 include "../re_used_file/clean_input.php";
 
@@ -129,7 +131,7 @@ if ($rowcount > 0) {
         <div class="col">
             <p>
                 <label class="form-label" for="Checkindate">Check in date: </label>
-                <input style="margin-left: 11%;" class="form-control-sm" type="text" id="Checkindate" name="Checkindate" value="<?php echo $row['checkIn'];?>"  >
+                <input style="margin-left: 10%;" class="form-control-sm" type="text" id="Checkindate" name="Checkindate" value="<?php echo $row['checkIn'];?>"  >
             </p>
         </div>
         <div class="col">
@@ -184,6 +186,7 @@ else
     echo "<h2>room not found with that ID</h2>"; //simple error feedback
 }
 mysqli_close($db_connection); //close the connection once done
+    include "../re_used_file/footer.php";
 ?>
 
 </body>

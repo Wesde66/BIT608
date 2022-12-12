@@ -1,10 +1,6 @@
 <?php
-if (!isset($_GET['id'])){
-    header('Location: http://localhost/Motueka/bookings/currentbookings.php');
-}
-
-include "../re_used_file/header.php";
 include "../re_used_file/check_session.php";
+include "../re_used_file/header.php";
 include "../re_used_file/menu.php";
 
 include "../re_used_file/config.php"; //load in any variables
@@ -35,7 +31,7 @@ $rowcount = mysqli_num_rows($result);
 ?>
 <h3>Booking Details View</h3>
 <h4><a href='currentbookings.php'>[Return to current bookings]</a><a href='http://localhost/Motueka/index.php'>[Return to the main page]</a></h4>
-
+<div class="w3-container">
 <?php
 //makes sure we have the bookings
 if($rowcount > 0)
@@ -49,6 +45,7 @@ if($rowcount > 0)
     echo "<dt>Extras required: </dt><dd>".$row['extras']."</dd>".PHP_EOL;
     echo "<dt>Room review: </dt><dd>".$row['roomReview']."</dd>".PHP_EOL;
     echo '</dl></fieldset>'.PHP_EOL;
+    echo '</div>';
 }
 else
 {
