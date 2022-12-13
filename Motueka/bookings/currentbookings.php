@@ -19,7 +19,7 @@ if (mysqli_connect_errno()) {
     exit; //stop processing the page further
 }
 //We check to see if admin is logged in. We then display all bookings
-if ($_SESSION['userid'] === 1){
+if ($_SESSION['userid'] == 1){
     //Create admin list of bookings
     $query = "SELECT bookingID,checkIn, checkout, contactNum, extras, roomReview, roomID, customerID FROM bookings ORDER BY checkIn";
     $result = mysqli_query($DBC,$query);
@@ -49,7 +49,7 @@ if ($_SESSION['userid'] === 1){
             }
             echo '</tr>'.PHP_EOL;
 
-    } else echo "<h2>No rooms found!</h2>";
+    } else echo "<h2>No bookings found!</h2>";
 }else{
     //If admin is not logged in we get the customers ID, and we list bookings on for that ID
     $customerID = $_SESSION['customerID'];
@@ -80,7 +80,7 @@ if ($_SESSION['userid'] === 1){
         }
         echo '</tr>'.PHP_EOL;
 
-    } else echo "<h2>No rooms found!</h2>";
+    } else echo "<h2>No bookings found!</h2>";
 }
 
 ?></table>

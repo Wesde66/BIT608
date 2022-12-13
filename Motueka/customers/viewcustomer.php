@@ -1,14 +1,16 @@
 <!DOCTYPE HTML>
 <?php
-include "check_session.php";
-//checkUser();
-//loginStatus(); 
+include "../re_used_file/check_session.php";
+include "../re_used_file/header.php";
+include "../re_used_file/menu.php";
+include "../re_used_file/config.php"; //load in any variables
+include "../re_used_file/clean_input.php";
 ?>
 <html><head><title>View Customer</title> </head>
  <body>
 
 <?php
-include "config.php"; //load in any variables
+
 
 $db_connection = mysqli_connect(DBHOST, DBUSER, DBPASSWORD, DBDATABASE);
 

@@ -2,10 +2,10 @@
 session_start();
 
 //overrides for development purposes only - comment this out when testing the login
-$_SESSION['loggedin'] = 1;     
-$_SESSION['userid'] = 1; //this is the ID for the admin user
-$_SESSION['username'] = 'Test';
-$_SESSION['customerID'] = 24;
+//$_SESSION['loggedin'] = 1;
+//$_SESSION['userid'] = 1; //this is the ID for the admin user
+//$_SESSION['username'] = 'Test';
+//$_SESSION['customerID'] = 24;
 //end of overrides
 
 function isAdmin() {
@@ -30,36 +30,36 @@ return true;
 //just to show we are are logged in
 function loginStatus() {
     $un = $_SESSION['username'];
-    if ($_SESSION['loggedin'] == 1)     
+    if ($_SESSION['loggedin'] == 1) {
         echo "<p style='float: right; margin-top: 7px; margin-right: 25px;'>Logged in as $un</p>";
-    else
+    }
+    else {
         echo "<p style='float: right; margin-top: 7px; margin-right: 25px;'>Logged out</p>";
+    }
 }
 
 //log a user in
-function login($id,$username, $customerID) {
-   //simple redirect if a user tries to access a page they have not logged in to
-   if ($_SESSION['loggedin'] == 0 and !empty($_SESSION['URI']))        
-        $uri = $_SESSION['URI'];          
-   else { 
-     $_SESSION['URI'] =  'http://localhost/Motueka/listcustomers.php';
-     $uri = $_SESSION['URI'];           
-   }  
+function login($id,$username,$customerID) {
 
-   $_SESSION['loggedin'] = 1;        
-   $_SESSION['userid'] = $id;   
-   $_SESSION['username'] = $username;
-   $_SESSION['customerID'] = $customerID;
-   $_SESSION['URI'] = ''; 
-   header('Location: '.$uri, true, 303);        
+    $_SESSION['customerID'] = $customerID;
+    $_SESSION['loggedin'] = 1;
+    $_SESSION['userid'] = $id;
+    $_SESSION['username'] = $username;
+
+
+    //simple redirect if a user tries to access a page they have not logged in to
+
+
+
 }
 
 //simple logout function
 function logout(){
-  $_SESSION['loggedin'] = 0;
-  $_SESSION['userid'] = -1;        
-  $_SESSION['username'] = '';
-  $_SESSION['URI'] = '';
-  header('Location: http://localhost/Motueka/login.php', true, 303);
+
+    $_SESSION['loggedin'] = 0 ;
+    $_SESSION['userid'] = -1;
+    $_SESSION['username'] = " ";
+    $_SESSION['customerID'] = " ";
+
+    header('Location: http://localhost/Motueka/login.php', true, 303);
 }
-?>

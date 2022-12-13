@@ -10,7 +10,7 @@
             <div class="w3-dropdown-hover">
                 <button class="w3-button">Bookings</button>
                 <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                    <a class="w3-bar-item w3-button" href="http://localhost/Motueka/bookings/bookingdetailsview.php">View booking details</a>
+                    <a class="w3-bar-item w3-button" href="http://localhost/Motueka/bookings/currentbookings.php">View booking details</a>
                     <a class="w3-bar-item w3-button" href="http://localhost/Motueka/bookings/makebookingandsearchavailability.php">Make booking</a>
                     <a class="w3-bar-item w3-button" href="http://localhost/Motueka/bookings/makebookingandsearchavailability.php">Search for availability</a>
                     <a class="w3-bar-item w3-button" href="http://localhost/Motueka/bookings/currentbookings.php">Current bookings</a>
@@ -34,17 +34,18 @@
             <div class="w3-dropdown-hover">
                 <button class="w3-button">Customers</button>
                 <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                    <a class="w3-bar-item w3-button" href="http://localhost/Motueka/customers/customersearch.php">Search for customer</a>
-                    <a class="w3-bar-item w3-button" href="http://localhost/Motueka/customers/deletecustomer.php">Delete customer</a>
-                    <a class="w3-bar-item w3-button" href="http://localhost/Motueka/customers/editcustomer.php">Edit a customer</a>
+                    <a class="w3-bar-item w3-button" href="http://localhost/Motueka/customers/listcustomers.php">Search for customer</a>
+                    <a class="w3-bar-item w3-button" href="http://localhost/Motueka/customers/listcustomers.php">Delete customer</a>
+                    <a class="w3-bar-item w3-button" href="http://localhost/Motueka/customers/listcustomers.php">Edit a customer</a>
                     <a class="w3-bar-item w3-button" href="http://localhost/Motueka/customers/listcustomers.php">List customers</a>
                     <a class="w3-bar-item w3-button" href="http://localhost/Motueka/customers/registercustomer.php">Register a customer</a>
-                    <a class="w3-bar-item w3-button" href="http://localhost/Motueka/customers/viewcustomer.php">View customer details</a>
+                    <a class="w3-bar-item w3-button" href="http://localhost/Motueka/customers/listcustomers.php">View customer details</a>
                 </div>
             </div>
 
-                <?php loginStatus(); ?>
-                <a href="http://localhost/Motueka/login.php" class="w3-bar-item w3-button w3-right ">Logout</a>
+                <?php var_dump($_SESSION);?>
+                <?php echo loginStatus();  ?>
+                <a href="http://localhost/Motueka/login.php"  class="w3-bar-item w3-button w3-right ">Logout</a>
         </div>
       </div>
     </div>

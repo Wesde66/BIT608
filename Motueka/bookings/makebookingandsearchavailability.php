@@ -1,7 +1,5 @@
 <?php
-include "../re_used_file/header.php";
 include "../re_used_file/check_session.php";
-include "../re_used_file/menu.php";
 
 
 ?>
@@ -64,28 +62,6 @@ include "../re_used_file/menu.php";
         xmlhttp.send();
 
     }
-    //date picker code
-    $( function() {
-        var st = document.getElementsByName('startdate');
-        $( st ).datepicker({
-            numberOfMonths: 2,
-            showButtonPanel: true,
-            dateFormat: 'yy-mm-dd',
-            minDate: 'today',
-
-        });
-    } );
-
-    $( function() {
-        var en = document.getElementsByName('enddate');
-        $( en).datepicker({
-            numberOfMonths: 2,
-            showButtonPanel: true,
-            dateFormat: 'yy-mm-dd',
-            minDate: 'startdate + 1',
-        });
-    } );
-
 </script>
 <?php
 include '../re_used_file/clean_input.php';
@@ -167,8 +143,34 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
     }
 
 }
+include "../re_used_file/header.php";
+include "../re_used_file/menu.php";
+loginStatus();
 ?>
+<script>
+//date picker code
+$( function() {
+var st = document.getElementById('sdate');
+$( st ).datepicker({
+numberOfMonths: 2,
+showButtonPanel: true,
+dateFormat: 'yy-mm-dd',
+minDate: 'today',
 
+});
+} );
+
+$( function() {
+var en = document.getElementById('edate');
+$( en).datepicker({
+numberOfMonths: 2,
+showButtonPanel: true,
+dateFormat: 'yy-mm-dd',
+minDate: 'startdate + 1',
+});
+} );
+
+</script>
 <body>
 <div id="make_a_booking" class="w3-container">
     <h2>Please complete the below to make a booking</h2>
@@ -185,6 +187,7 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
             </select>
             <br>
             <label for="stdate">Checkin Date: </label><input type="text" id="stdate" name="stdate" style="margin-left: 1%;" required readonly>
+            <script>    </script>
             <label for="endate">Checkout Date: </label><input type="text" id="endate" name="endate" required readonly><br>
             <label for="mobile">Mobile number: </label><input type="tel" id="mobile" name="mobile" style="margin-top: 1%" required >
             <br>
@@ -205,9 +208,9 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
     <form>
         <label for="checkin">Checkin date: </label>
 
-        <input class="startDate" title="checkin" name="startdate" id="sdate" placeholder="2000-10-20">
+        <input type="text" class="startDate" title="checkin" name="startdate" id="sdate" placeholder="2000-10-20">
         <label for="checkout">Checkout date: </label>
-        <input title="checkout" id="edate" name="enddate" placeholder="2000-10-20">
+        <input type="text" title="checkout" id="edate" name="enddate" placeholder="2000-10-20">
 
         <button type="button" name="BTN" onclick="searchResult(this.value)" >Fetch available rooms</button>
 

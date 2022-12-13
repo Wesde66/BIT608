@@ -1,5 +1,12 @@
 <!DOCTYPE HTML>
 <html><head><title>Browse customers with AJAX autocomplete</title>
+    <?php
+    include "../re_used_file/check_session.php";
+    include "../re_used_file/header.php";
+    include "../re_used_file/menu.php";
+    include "../re_used_file/config.php"; //load in any variables
+    include "../re_used_file/clean_input.php";
+    ?>
 <script>
 
 function searchResult(searchstr) {
