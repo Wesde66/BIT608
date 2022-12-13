@@ -45,7 +45,8 @@
 
                 <?php var_dump($_SESSION);?>
                 <?php echo loginStatus();  ?>
-                <a href="http://localhost/Motueka/login.php"  class="w3-bar-item w3-button w3-right ">Logout</a>
+
+                <a href="http://localhost/Motueka/re_used_file/logout.php"  class="w3-bar-item w3-button w3-right ">Logout</a>
         </div>
       </div>
     </div>

@@ -60,7 +60,7 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
             if (password_verify($password, $row['password'])){
 
                 login($row['admin'],$row['firstname']." ".$row['lastname'] , $row['customerID']);
-                echo '<p>Your are logged in </p>';
+
 
             }else{
                 ?>
@@ -85,7 +85,7 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
 }
 include "re_used_file/header.php";
 include "re_used_file/menu.php";
-loginStatus();
+
 ?>
 
     <section id="customer_login">

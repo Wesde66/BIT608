@@ -40,12 +40,19 @@ function loginStatus() {
 
 //log a user in
 function login($id,$username,$customerID) {
-
+    //simple redirect if a user tries to access a page they have not logged in to
+    if ($_SESSION['loggedin'] == 0 and !empty($_SESSION['URI']))
+        $uri = $_SESSION['URI'];
+    else {
+        $_SESSION['URI'] =  'http://localhost/Motueka/bookings/makebookingandsearchavailability.php';
+        $uri = $_SESSION['URI'];
+    }
     $_SESSION['customerID'] = $customerID;
     $_SESSION['loggedin'] = 1;
     $_SESSION['userid'] = $id;
     $_SESSION['username'] = $username;
-
+    $_SESSION['URI'] = '';
+    header('Location: '.$uri, true, 303);
 
     //simple redirect if a user tries to access a page they have not logged in to
 
@@ -60,6 +67,8 @@ function logout(){
     $_SESSION['userid'] = -1;
     $_SESSION['username'] = " ";
     $_SESSION['customerID'] = " ";
+    $_SESSION['URI'] = '';
 
-    header('Location: http://localhost/Motueka/login.php', true, 303);
+
+    header('Location: http://localhost/Motueka/index.php', true, 303);
 }
