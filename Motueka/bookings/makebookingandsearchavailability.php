@@ -1,6 +1,6 @@
 <?php
 include "../re_used_file/check_session.php";
-
+checkUser();
 
 ?>
 

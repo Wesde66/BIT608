@@ -17,7 +17,7 @@ function isAdmin() {
 
 //function to check if the user is logged else send to the login page 
 function checkUser() {
-return true;
+
     $_SESSION['URI'] = '';    
     if ($_SESSION['loggedin'] == 1)
        return TRUE;

@@ -3,8 +3,11 @@
  <body>
 
 <?php
+include "../re_used_file/check_session.php";
+include "../re_used_file/header.php";
+include "../re_used_file/menu.php";
 include "../re_used_file/config.php"; //load in any variables
-include "../re_used_file/clean_input.php";
+include "../re_used_file/clean_input.php";; //load in any variables
 
 $db_connection = mysqli_connect(DBHOST, DBUSER, DBPASSWORD, DBDATABASE);
 $error=0;

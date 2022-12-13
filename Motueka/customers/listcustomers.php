@@ -37,7 +37,7 @@ function searchResult(searchstr) {
          var mbrid = mbrs[i]['customerID'];
          var fn    = mbrs[i]['firstname'];
          var ln    = mbrs[i]['lastname'];
-      
+
          //concatenate our actions urls into a single string
          var urls  = '<a href='+mbrid+'"viewcustomer.php?id=">[view]</a>';
              urls += '<a href='+mbrid+'"editcustomer.php?id=">[edit]</a>';

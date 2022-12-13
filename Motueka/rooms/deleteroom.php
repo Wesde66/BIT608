@@ -3,7 +3,11 @@
  <body>
 
 <?php
-include "config.php"; //load in any variables
+include "../re_used_file/check_session.php";
+include "../re_used_file/header.php";
+include "../re_used_file/menu.php";
+include "../re_used_file/config.php"; //load in any variables
+
 $db_connection = mysqli_connect(DBHOST, DBUSER, DBPASSWORD, DBDATABASE);
 
 //insert DB code from here onwards
@@ -79,7 +83,7 @@ if($rowcount > 0)
      <h2>Are you sure you want to delete this Room?</h2>
      <input type="hidden" name="id" value="<?php echo $id; ?>">
      <input type="submit" name="submit" value="Delete">
-     <a href="../listrooms.php">[Cancel]</a>
+     <a href="listrooms.php">[Cancel]</a>
      </form>
 <?php    
 }

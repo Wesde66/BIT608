@@ -3,13 +3,17 @@
  <body>
 
 <?php
-include "clean_input.php";
+include "../re_used_file/check_session.php";
+include "../re_used_file/header.php";
+include "../re_used_file/menu.php";
+include "../re_used_file/config.php"; //load in any variables
+include "../re_used_file/clean_input.php";; //load in any variables
 
 //the data was sent using a form therefore we use the $_POST instead of $_GET
 //check if we are saving data first by checking if the submit button exists in the array
 if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] == 'Add')) {
 //if ($_SERVER["REQUEST_METHOD"] == "POST") { //alternative simpler POST test    
-    include "config.php"; //load in any variables
+
     $db_connection = mysqli_connect(DBHOST, DBUSER, DBPASSWORD, DBDATABASE);
 
     if (mysqli_connect_errno()) {

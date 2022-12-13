@@ -1,6 +1,8 @@
 <?php
-include "../re_used_file/header.php";
+
 include "../re_used_file/check_session.php";
+checkUser();
+include "../re_used_file/header.php";
 include "../re_used_file/menu.php";
 ?>
     <div class="w3-container w3-border-bottom">

@@ -1,12 +1,11 @@
 <?php
 include "../re_used_file/check_session.php";
+checkUser();
 include "../re_used_file/header.php";
 include "../re_used_file/menu.php";
-
-
-
 include "../re_used_file/config.php"; //load in any variables
 include "../re_used_file/clean_input.php";; //load in any variables
+
 $DBC = mysqli_connect(DBHOST, DBUSER, DBPASSWORD, DBDATABASE);
 
 //insert DB code from here onwards
