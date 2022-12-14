@@ -1,15 +1,10 @@
 <?php
-include "header.php";
-include "check_session.php";
 
-include "menu.php";
-loginStatus(); //show the current login status
+include "re_used_file/check_session.php";
+include "re_used_file/header.php";
+include "re_used_file/menu.php";
 
-echo '<div id="site_content">';
-include "sidebar.php";
 
-echo '<div id="content">';
-include "content.php";
 ?>
 <div id="privacy_statement" style="margin-left: 8%; margin-top: 5%; margin-right: 3%;">
 
@@ -45,6 +40,6 @@ include "content.php";
 
 
 <?php
-echo '</div></div>';
-include "footer.php";
+
+include "re_used_file/footer.php";
 ?>
