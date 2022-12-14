@@ -102,11 +102,11 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
         $extras = cleanInput($extras);
     }else{
         $extras = " ";
-        $error++;
+
     }
     //Get contact number
     if(isset($_POST['mobile']) and !empty($_POST['mobile'])){
-        $contact = $_POST['mobile'];
+        $contact =cleanInput($_POST['mobile']) ;
         if (preg_match('/^[0-9]*$/',$contact )){
             $contact = cleanInput($contact);
             $contactNum = $contact;
@@ -116,7 +116,7 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
         }
     }
     if(isset($_POST['stdate']) and !empty($_POST['stdate'])){
-        $checkin =$_POST['stdate'];
+        $checkin =cleanInput($_POST['stdate']);
         //Make sure those dates are in the correct format
         $checkin = date('Y-m-d', strtotime(($checkin)));
     }else{
@@ -124,7 +124,7 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
         $error++;
     }
     if(isset($_POST['endate']) and !empty($_POST['endate'])){
-        $checkout =$_POST['endate'];
+        $checkout =cleanInput($_POST['endate']);
         //Make sure those dates are in the correct format
         $checkout = date('Y-m-d', strtotime(($checkout)));
     }else{
@@ -150,24 +150,24 @@ include "../re_used_file/menu.php";
 <script>
 //date picker code
 $( function() {
-var st = document.getElementById('sdate');
-$( st ).datepicker({
-numberOfMonths: 2,
-showButtonPanel: true,
-dateFormat: 'yy-mm-dd',
-minDate: 'today',
+    var st = document.getElementById('sdate');
+    $( st ).datepicker({
+        numberOfMonths: 2,
+        showButtonPanel: true,
+        dateFormat: 'yy-mm-dd',
+        minDate: 'today',
 
-});
+    });
 } );
 
 $( function() {
-var en = document.getElementById('edate');
-$( en).datepicker({
-numberOfMonths: 2,
-showButtonPanel: true,
-dateFormat: 'yy-mm-dd',
-minDate: 'startdate + 1',
-});
+    var en = document.getElementById('edate');
+    $( en).datepicker({
+        numberOfMonths: 2,
+        showButtonPanel: true,
+        dateFormat: 'yy-mm-dd',
+        minDate: 'startdate + 1',
+    });
 } );
 
 </script>
@@ -208,9 +208,9 @@ minDate: 'startdate + 1',
     <form>
         <label for="checkin">Checkin date: </label>
 
-        <input type="text" class="startDate" title="checkin" name="startdate" id="sdate" placeholder="2000-10-20">
+        <input type="text" class="startDate" title="checkin" name="startdate" id="sdate" placeholder="2000-10-20" required>
         <label for="checkout">Checkout date: </label>
-        <input type="text" title="checkout" id="edate" name="enddate" placeholder="2000-10-20">
+        <input type="text" title="checkout" id="edate" name="enddate" placeholder="2000-10-20" required>
 
         <button type="button" name="BTN" onclick="searchResult(this.value)" >Fetch available rooms</button>
 
