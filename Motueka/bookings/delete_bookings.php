@@ -73,14 +73,14 @@ $rowcount = mysqli_num_rows($result);
 //makes sure we have the Room
 if($rowcount > 0)
 {
-    echo "<fieldset><legend>Room detail #$id</legend><dl>";
+    echo "<fieldset><legend>Booking details #$id</legend><dl>";
     $row = mysqli_fetch_assoc($result);
-    echo "<dt>Room name:</dt><dd>".$row['roomID']."</dd>".PHP_EOL;
-    echo "<dt>Room name:</dt><dd>".$row['checkIn']."</dd>".PHP_EOL;
-    echo "<dt>Description:</dt><dd>".$row['checkout']."</dd>".PHP_EOL;
-    echo "<dt>Room type:</dt><dd>".$row['contactNum']."</dd>".PHP_EOL;
-    echo "<dt>Sleeps:</dt><dd>".$row['extras']."</dd>".PHP_EOL;
-    echo "<dt>Sleeps:</dt><dd>".$row['roomReview']."</dd>".PHP_EOL;
+    echo "<dt>Booking ID:</dt><dd>".$row['roomID']."</dd>".PHP_EOL;
+    echo "<dt>Check in:</dt><dd>".$row['checkIn']."</dd>".PHP_EOL;
+    echo "<dt>Check out:</dt><dd>".$row['checkout']."</dd>".PHP_EOL;
+    echo "<dt>Contact number:</dt><dd>".$row['contactNum']."</dd>".PHP_EOL;
+    echo "<dt>Extras:</dt><dd>".$row['extras']."</dd>".PHP_EOL;
+    echo "<dt>Room review:</dt><dd>".$row['roomReview']."</dd>".PHP_EOL;
     echo "</dl></fieldset>".PHP_EOL;
     ?><form method="POST" action="delete_bookings.php">
     <h2>Are you sure you want to delete this booking?</h2>
@@ -92,7 +92,7 @@ if($rowcount > 0)
 }
 else
 {
-    echo "<h2>No Room found, possibly deleted!</h2>"; //suitable feedback
+    echo "<h2>No Booking found, possibly deleted!</h2>"; //suitable feedback
 }
 mysqli_free_result($result); //free any memory used by the query
 mysqli_close($db_connection); //close the connection once done
