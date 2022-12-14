@@ -36,6 +36,7 @@ function loginStatus() {
     else {
         echo "<p style='float: right; margin-top: 7px; margin-right: 25px;'>Logged out</p>";
     }
+
 }
 
 //log a user in

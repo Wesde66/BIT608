@@ -135,7 +135,7 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
         $sql ="INSERT INTO bookings( checkIn, checkout, contactNum, extras, roomID, customerID)
                 VALUES ('$checkin','$checkout','$contactNum','$extras','$roomID','$customerID')";
         if ($DBC->query($sql)=== TRUE){
-            echo "Booking was successfully";
+            header('Location: http://localhost/Motueka/bookings/currentbookings.php');
         }else{
             echo "Error: ".$sql."<br>".$DBC->error;
         }
@@ -145,7 +145,7 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
 }
 include "../re_used_file/header.php";
 include "../re_used_file/menu.php";
-loginStatus();
+
 ?>
 <script>
 //date picker code
