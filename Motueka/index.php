@@ -20,7 +20,7 @@ include "re_used_file/menu.php";
     <h2 class="w3-center">Welcome to the Ongaonga Bed & Breakfast</h2>
     <br>
     <H6 class="w3-center">The retired couple Mr and Mrs Smith have a large beautiful homestead in the Ongaonga Region.
-        We live by ourselves have this beautifuly large heritage home which we have turned into a Bed & Breakfast (B&B).
+        We live by ourselves have this beautifully large heritage home which we have turned into a Bed & Breakfast (B&B).
         Our home is close to Napier, Waipukurau and Tikokino....</H6>
 
     <div class="w3-content w3-section" style="max-width:80%">

@@ -24,7 +24,7 @@
       if (mysqli_connect_errno()) {
         echo "Error: Unable to connect to MySQL. " . mysqli_connect_error();
         exit; //stop processing the page further
-      };
+      }
 
       //validate incoming data - only the first field is done for you in this example - rest is up to you do
       //roomname

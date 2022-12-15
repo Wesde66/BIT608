@@ -40,10 +40,11 @@
             var fn = mbrs[i]['firstname'];
             var ln = mbrs[i]['lastname'];
 
+            //This code has been corrected. The ID has been moved to the back of the url.
             //concatenate our actions urls into a single string
-            var urls = '<a href=' + mbrid + '"viewcustomer.php?id=">[view]</a>';
-            urls += '<a href=' + mbrid + '"editcustomer.php?id=">[edit]</a>';
-            urls += '<a href=' + mbrid + '"deletecustomer.php?id=">[delete]</a>';
+            var urls = '<a href="viewcustomer.php?id='+mbrid+'">[view]</a>';
+            urls += '<a href="editcustomer.php?id='+mbrid+'">[edit]</a>';
+            urls += '<a href="deletecustomer.php?id='+mbrid+'">[delete]</a>';
 
             //create a table row with three cells  
             tr = tbl.insertRow(-1);

@@ -6,7 +6,7 @@ include "../re_used_file/config.php"; //load in any variables
 include "../re_used_file/clean_input.php";
 ?>
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
 
 <head>
     <title>View Customer</title>
