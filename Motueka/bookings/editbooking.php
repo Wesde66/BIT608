@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html><head><title>Edit a room</title> </head>
+<html lang="en"><head><title>Edit a room</title> </head>
 <body>
 
 
@@ -21,7 +21,7 @@ $msg = "";
 if (mysqli_connect_errno()) {
     echo "Error: Unable to connect to MySQL. ".mysqli_connect_error() ;
     exit; //stop processing the page further
-};
+}
 
 //retrieve the bookingid from the URL
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
@@ -175,7 +175,7 @@ if ($rowcount > 0) {
         <div class="mb-3 mt-3">
             <p>
                 <label class="form-label" for="RoomId">Room number: </label>
-                <input style="margin-left: 3%;" class="form-control-sm" type="text" id="RoomId" name="RoomId" value="<?php echo $row['roomID'];?> " required >
+                <input style="margin-left: 3%;" class="form-control-sm" type="text" id="RoomId" name="RoomId" value="<?php echo $row['roomID'];?> " required />
             </p>
         </div>
     </div>
@@ -183,14 +183,14 @@ if ($rowcount > 0) {
         <div class="col">
             <p>
                 <label class="form-label" for="Checkindate">Check in date: </label>
-                <input style="margin-left: 10%;" class="form-control-sm" type="text" id="Checkindate" name="Checkindate" value="<?php echo $row['checkIn'];?>" required >
+                <input style="margin-left: 10%;" class="form-control-sm" type="text" id="Checkindate" name="Checkindate" value="<?php echo $row['checkIn'];?>" required />
             </p>
         </div>
         <div class="col">
             <p>
 
                 <label class="form-label" for="Checkoutdate">Check out date: </label>
-                <input class="form-control-sm" type="text" id="Checkoutdate" name="Checkoutdate" value="<?php echo $row['checkout'];?>" required>
+                <input class="form-control-sm" type="text" id="Checkoutdate" name="Checkoutdate" value="<?php echo $row['checkout'];?>" required/>
             </p>
         </div>
         <div class="col">
@@ -203,7 +203,8 @@ if ($rowcount > 0) {
         <div class="mb-3 mt-3">
             <p>
                 <label class="form-label" for="MobileNumber">Contact Number: </label>
-                <input style="margin-left: 2%;" class="form-control-sm" type="tel" id="MobileNumber" name="MobileNumber" value="<?php echo $row['contactNum']; ?>" required>
+                <input style="margin-left: 2%;" class="form-control-sm" type="tel" id="MobileNumber" name="MobileNumber" value="<?php echo '0'.$row['contactNum']; ?>" required
+                       pattern="([0-9]{3}[0-9]{3}[0-9]{4}|[0-9]{3}[0-9]{4}[0-9]{4})" />
             </p>
         </div>
     </div>
@@ -211,7 +212,7 @@ if ($rowcount > 0) {
         <div class="mb-3 mt-3">
             <p>
                 <label class="form-label" for="extras">Extras for the booking: </label><br>
-                <input class="form-control-lg" rows="5" type="text" id="extras" name="extras" value="<?php echo $row['extras']; ?>">
+                <input class="form-control-lg"  type="text" id="extras" name="extras" value="<?php echo $row['extras']; ?>"/>
             </p>
         </div>
     </div>
@@ -219,13 +220,13 @@ if ($rowcount > 0) {
         <div class="mb-3 mt-3">
             <p>
                 <label class="form-label" for="roomReview">Room review: </label><br>
-                <input class="form-control-lg" rows="5" type="text" id="roomReview" name="roomReview" value="<?php echo $row['roomReview']; ?>">
+                <input class="form-control-lg"  type="text" id="roomReview" name="roomReview" value="<?php echo $row['roomReview']; ?>"/>
             </p>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <input type="submit" name="submit" value="Update">
+            <input type="submit" name="submit" value="Update"/>
         </div>
         <div class="col"><br>
             <a href='http://localhost/Motueka/bookings/currentbookings.php'>[Cancel]</a>

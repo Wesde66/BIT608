@@ -44,7 +44,7 @@ if ($_SESSION['userid'] == 1){
     if ($rowcount > 0){
         while ($row = mysqli_fetch_assoc($result)) {
             $id = $row['bookingID'];
-            echo '<tr><td>'.$row['customerID'].'</td><td>'.$row['roomID'].'</td><td>'.$row['checkIn'].'</td><td>'.$row['checkout'].'</td><td>'.$row['contactNum'].'</td><td>'.$row['extras'].'</td><td>'.$row['roomReview'].'</td>';
+            echo '<tr><td>'.$row['customerID'].'</td><td>'.$row['roomID'].'</td><td>'.$row['checkIn'].'</td><td>'.$row['checkout'].'</td><td>'.'0'.$row['contactNum'].'</td><td>'.$row['extras'].'</td><td>'.$row['roomReview'].'</td>';
             echo     '<td><a href="bookingdetailsview.php?id='.$id.'">[view]</a>';
             echo         '<a href="editbooking.php?id='.$id.'">[edit]</a>';
             echo         '<a href="delete_bookings.php?id='.$id.'">[delete]</a></td>';

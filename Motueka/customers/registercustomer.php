@@ -130,27 +130,29 @@ include "../re_used_file/menu.php";
                 <div class="col">
                     <div class="mb-3 mt-3">
                         <label for="firstname" class="form-label">First name:</label>
-                        <input type="text" class="form-control" id="firstname" placeholder="First Name" name="firstname" required>
+                        <input type="text" class="form-control" id="firstname" placeholder="First Name" name="firstname" required />
                     </div>
                 </div>
                 <div class="col">
                     <div class="mb-3 mt-3">
                         <label for="lastname" class="form-label">Last name:</label>
-                        <input type="text" class="form-control" id="lastname" placeholder="Last name" name="lastname" required>
+                        <input type="text" class="form-control" id="lastname" placeholder="Last name" name="lastname" required />
                     </div>
                 </div>
             </div>
             <div class="mb-3 mt-3">
                 <label for="email" class="form-label">Email:</label>
-                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
+                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required />
             </div>
             <div class="mb-3 mt-3">
                 <label for="mobile" class="form-label">Mobile:</label>
-                <input type="tel" class="form-control" id="mobile" placeholder="Mobile number" name="mobile" required>
+                <input type="tel" class="form-control" id="mobile" placeholder="Mobile number" name="mobile" required
+                       pattern="([0-9]{3}[0-9]{3}[0-9]{4}|[0-9]{3}[0-9]{4}[0-9]{4})"/>
             </div>
             <div class="mb-3">
+                // We should add in here JS to make sure password meets certain criteria.
                 <label for="password" class="form-label">Password:</label>
-                <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" required>
+                <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" required />
             </div>
             <div class="form-check mb-3">
                 <label class="form-check-label">
