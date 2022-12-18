@@ -70,7 +70,7 @@ include '../re_used_file/config.php';
 if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] == 'Make_Booking')) {
 
     $DBC = mysqli_connect(DBHOST, DBUSER, DBPASSWORD, DBDATABASE);
-
+include "../re_used_file/validations.php";
     if (mysqli_connect_errno()) {
         echo "Error: Unable to connect to MySQL. " . mysqli_connect_error();
         exit; //stop processing the page further
@@ -83,6 +83,8 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
     $checkout = " ";
     $checkin = " ";
     $error = 0;
+    $msg = "";
+
 
     //Get room ID of selected room.
     if (isset($_POST['RoomNameAvl']) and !empty($_POST['RoomNameAvl'])) {
@@ -93,24 +95,24 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
         $row = mysqli_fetch_assoc($result);
         $roomID = $row['roomID'];
     } else {
-        $roomID = " ";
+        $msg = "Invalid room number";
         $error++;
     }
     //Get extras details
     if (isset($_POST['bookingsExtra'])) {
         $extras = $_POST['bookingsExtra'];
         $extras = cleanInput($extras);
-    } else {
-        $extras = " ";
     }
     //Get contact number
     if (isset($_POST['mobile']) and !empty($_POST['mobile'])) {
         $contact = cleanInput($_POST['mobile']);
-        if (preg_match('/^[0-9]*$/', $contact)) {
+
+        if (preg_match('/^d{10},|,d{11}$/' , $contact)) {
             $contact = cleanInput($contact);
             $contactNum = $contact;
         } else {
-            $contactNum = " ";
+
+            $msg = "Invalid phone number";
             $error++;
         }
     }
@@ -119,7 +121,7 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
         //Make sure those dates are in the correct format
         $checkin = date('Y-m-d', strtotime(($checkin)));
     } else {
-        $checkin = " ";
+        $msg = "Invalid start date";
         $error++;
     }
     if (isset($_POST['endate']) and !empty($_POST['endate'])) {
@@ -127,7 +129,7 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
         //Make sure those dates are in the correct format
         $checkout = date('Y-m-d', strtotime(($checkout)));
     } else {
-        $checkout = " ";
+        $msg = "Invalid end date";
         $error++;
     }
     if ($error === 0) {
@@ -139,6 +141,8 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
             echo "Error: " . $sql . "<br>" . $DBC->error;
         }
         $DBC->close();
+    }else {
+        echo $msg;
     }
 }
 include "../re_used_file/header.php";
@@ -184,10 +188,11 @@ include "../re_used_file/menu.php";
                     <option id="roomOption" disabled selected value> -- select a room -- </option>
                 </select>
                 <br>
-                <label for="stdate">Checkin Date: </label><input type="text" id="stdate" name="stdate" style="margin-left: 1%;" required readonly>
+                <label for="stdate">Checkin Date: </label><input type="text" id="stdate" name="stdate" style="margin-left: 1%;" required readonly/>
                 <script> </script>
                 <label for="endate">Checkout Date: </label><input type="text" id="endate" name="endate" required readonly><br>
-                <label for="mobile">Mobile number: </label><input type="tel" id="mobile" name="mobile" style="margin-top: 1%" required>
+
+                <label for="mobile">Mobile number: </label><input type="tel" id="mobile" name="mobile" style="margin-top: 1%; " required>
                 <br>
                 <label for="bookingsExtra">Booking extras :</label><br>
                 <textarea id="bookingsExtra" name="bookingsExtra" style="margin-bottom: 1%" placeholder="Please let us know if you require anything extra" rows="5" cols="60"></textarea>
@@ -206,9 +211,9 @@ include "../re_used_file/menu.php";
         <form>
             <label for="checkin">Checkin date: </label>
 
-            <input type="text" class="startDate" title="checkin" name="startdate" id="sdate" placeholder="2000-10-20" required>
+            <input type="text" class="startDate" title="checkin" name="startdate" id="sdate" placeholder="2000-10-20" required/>
             <label for="checkout">Checkout date: </label>
-            <input type="text" title="checkout" id="edate" name="enddate" placeholder="2000-10-20" required>
+            <input type="text" title="checkout" id="edate" name="enddate" placeholder="2000-10-20" required/>
 
             <button type="button" name="BTN" onclick="searchResult(this.value)">Fetch available rooms</button>
 

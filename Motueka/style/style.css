@@ -12,7 +12,6 @@
 {
     padding: 2%;
 }
-#search_for_rooms
-{
-
+.bg-picture{
+    background-image: url("../style/images/Room1.jpg");
 }
