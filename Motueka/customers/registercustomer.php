@@ -4,6 +4,7 @@ include "../re_used_file/check_session.php";
 
 include "../re_used_file/config.php";
 include "../re_used_file/clean_input.php";
+include "../re_used_file/validations.php";
 //Make sure fields are entered before submit and that they are correct
 $error = 0; //clear our error flag
 $msg = '';
@@ -73,16 +74,25 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
     }
     if (isset($_POST['mobile']) and !empty($_POST['mobile']) and is_string($_POST['mobile'])) {
         $mn = cleanInput($_POST['mobile']);
-        $mobile = (strlen($mn) > 50) ? substr($mn, 1, 10) : $mn; //check length and clip if too big
+        $mobile = (strlen($mn) > 50) ? substr($mn, 1, 11) : $mn; //check length and clip if too big
     } else {
         $error++; //bump the error flag
         $msg .= 'Invalid mobile '; //append error message
         $mobile = '';
     }
+
     if (isset($_POST['password']) and !empty($_POST['password']) and is_string($_POST['password'])) {
-        $pw = cleanInput($_POST['password']);
-        $password = (strlen($pw) > 255) ? substr($pw, 1, 255) : $pw; //check length and clip if too big
-        $password = password_hash($password, PASSWORD_DEFAULT);
+        $pw = password_validation($_POST['password']);
+        if ($pw !== ""){
+            $pw = cleanInput($pw);
+            $password = (strlen($pw) > 255) ? substr($pw, 1, 255) : $pw; //check length and clip if too big
+            $password = password_hash($password, PASSWORD_DEFAULT);
+        }else{
+            $error++; //bump the error flag
+            $msg .= 'Invalid password '; //append error message
+            $password = '';
+        }
+
     } else {
         $error++; //bump the error flag
         $msg .= 'Invalid password '; //append error message
@@ -155,13 +165,22 @@ include "../re_used_file/menu.php";
                                     </div>
 
                                     <div class="form-outline mb-4">
+                                        <div id = "errors"></div>
                                         <input type="password" id="password" placeholder="Enter password" name="password" class="form-control form-control-lg" required/>
                                         <label class="form-label" for="password">Password</label>
+                                        <!--JQuery visual for client-->
+                                        <script>$("#password").passwordValidation({"confirmField": "#myConfirmPassword"}, function(element, valid, match, failedCases) {
+                                                $("#errors").html("<pre>" + failedCases.join("\n") + "</pre>");
+                                                if(valid) $(element).css("border","2px solid green");
+                                                if(!valid) $(element).css("border","2px solid red");
+                                                if(valid && match) $("#myConfirmPassword").css("border","2px solid green");
+                                                if(!valid || !match) $("#myConfirmPassword").css("border","2px solid red");
+                                            });</script>
                                     </div>
                                     <!--Need to create the logic to check passwords are the same-->
                                     <div class="form-outline mb-4">
-                                        <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />
-                                        <label class="form-label" for="form3Example4cdg">Repeat your password</label>
+                                        <input type="password" id="myConfirmPassword" class="form-control form-control-lg" />
+                                        <label class="form-label" for="myConfirmPassword">Repeat your password</label>
                                     </div>
 
                                     <div class="form-check d-flex justify-content-center mb-5">

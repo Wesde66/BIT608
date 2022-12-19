@@ -19,7 +19,7 @@
     <!--W3-schools link for visual-->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
     <!--Local java script functions link-->
-    <script type="text/javascript" src="http://localhost/functions.js"></script>
+    <script  src="../../functions.js"></script>
     <!--Javascript links-->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -33,6 +33,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500&display=swap" rel="stylesheet">
+    <!--JQuery password validation-->
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="../../jquery.password-validation.js"></script>
 
 
 </head>
