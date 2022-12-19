@@ -34,7 +34,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500&display=swap" rel="stylesheet">
     <!--JQuery password validation-->
-    <script src="//code.jquery.com/jquery.min.js"></script>
+
     <script src="../../jquery.password-validation.js"></script>
 
 

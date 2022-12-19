@@ -18,46 +18,33 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
         exit; //stop processing the page further
     }
 
-    //Checking data exists and is not invalid characters
-    if (empty($_POST['firstname'])) {
-        $firstnameErr = 'Please complete correctly';
-    } else {
-        $firstname = $_POST['firstname'];
-        if (!preg_match('/^[a-zA-Z\s]+$/', $firstname)) {
-            $firstnameErr = 'Incorrect characters used';
-        }
-    }
-    if (empty($_POST['lastname'])) {
-        $lastnameErr = 'Please complete correctly';
-    } else {
-        $lastname = $_POST['lastname'];
-        if (!preg_match('/^[a-zA-Z\s]+$/', $lastname)) {
-            $lastnameErr = 'Incorrect characters used';
-        }
-    }
-    if (empty($_POST['email'])) {
-        $emailErr = 'Please complete';
-    } else {
-        $email = $_POST['email'];
-    }
-    if (empty($_POST['mobile'])) {
-        $mobileErr = 'Please complete';
-    } else {
-        $mobile = $_POST['mobile'];
-    }
+
     // This is the end of the data check section
     if (isset($_POST['firstname']) and !empty($_POST['firstname']) and is_string($_POST['firstname'])) {
-        $fn = cleanInput($_POST['firstname']);
-        $firstname = (strlen($fn) > 50) ? substr($fn, 1, 50) : $fn; //check length and clip if too big
-
+        $fn = name_validation($_POST['firstname']);
+        if($fn !== ""){
+            $fn = cleanInput($fn);
+            $firstname = (strlen($fn) > 50) ? substr($fn, 1, 50) : $fn; //check length and clip if too big
+        }else{
+            $error++; //bump the error flag
+            $msg .= 'Invalid firstname '; //append error message
+            $firstname = '';
+        }
     } else {
         $error++; //bump the error flag
         $msg .= 'Invalid firstname '; //append error message
         $firstname = '';
     }
     if (isset($_POST['lastname']) and !empty($_POST['lastname']) and is_string($_POST['lastname'])) {
-        $ln = cleanInput($_POST['lastname']);
-        $lastname = (strlen($ln) > 50) ? substr($ln, 1, 50) : $ln; //check length and clip if too big
+        $ln = name_validation($_POST['lastname']);
+        if($ln !== ""){
+            $ln = cleanInput($ln);
+            $lastname = (strlen($ln) > 50) ? substr($ln, 1, 50) : $ln; //check length and clip if too big
+        }else{
+            $error++; //bump the error flag
+            $msg .= 'Invalid lastname '; //append error message
+            $lastname = '';
+        }
     } else {
         $error++; //bump the error flag
         $msg .= 'Invalid lastname '; //append error message
@@ -66,15 +53,31 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
 
     if (isset($_POST['email']) and !empty($_POST['email']) and is_string($_POST['email'])) {
         $en = cleanInput($_POST['email']);
-        $email = (strlen($en) > 50) ? substr($en, 1, 50) : $en; //check length and clip if too big
+        if(filter_var($en, FILTER_VALIDATE_EMAIL)){
+            $email = (strlen($en) > 50) ? substr($en, 1, 50) : $en; //check length and clip if too big
+        }else{
+            $error++; //bump the error flag
+            $msg .= 'Invalid email '; //append error message
+            $email = '';
+        }
+
     } else {
         $error++; //bump the error flag
         $msg .= 'Invalid email '; //append error message
         $email = '';
     }
     if (isset($_POST['mobile']) and !empty($_POST['mobile']) and is_string($_POST['mobile'])) {
-        $mn = cleanInput($_POST['mobile']);
-        $mobile = (strlen($mn) > 50) ? substr($mn, 1, 11) : $mn; //check length and clip if too big
+        $mn = mobile_validation($_POST['mobile']);
+
+        if ($mn !== ""){
+            $mn = cleanInput($mn);
+            $mobile = (strlen($mn) > 50) ? substr($mn, 1, 11) : $mn; //check length and clip if too big
+        }else{
+            $error++; //bump the error flag
+            $msg .= 'Invalid mobile '; //append error message
+            $mobile = '';
+        }
+
     } else {
         $error++; //bump the error flag
         $msg .= 'Invalid mobile '; //append error message
@@ -159,7 +162,7 @@ include "../re_used_file/menu.php";
                                         <label class="form-label" for="email">Your Email</label>
                                     </div>
                                     <div class="form-outline mb-4">
-                                        <input type="tel" id="mobile" placeholder="Mobile number" name="mobile" pattern="([0-9]{3}[0-9]{3}[0-9]{4}|[0-9]{3}[0-9]{4}[0-9]{4})"
+                                        <input type="tel" id="mobile" placeholder="Mobile number" name="mobile" )"  <!--pattern="([0-9]{3}[0-9]{3}[0-9]{4}|[0-9]{3}[0-9]{4}[0-9]{4}-->
                                                class="form-control form-control-lg" required/>
                                         <label class="form-label" for="mobile">Your mobile</label>
                                     </div>
@@ -179,7 +182,7 @@ include "../re_used_file/menu.php";
                                     </div>
                                     <!--Need to create the logic to check passwords are the same-->
                                     <div class="form-outline mb-4">
-                                        <input type="password" id="myConfirmPassword" class="form-control form-control-lg" />
+                                        <input type="password" id="myConfirmPassword" class="form-control form-control-lg" required/>
                                         <label class="form-label" for="myConfirmPassword">Repeat your password</label>
                                     </div>
 

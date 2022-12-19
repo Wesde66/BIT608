@@ -2,6 +2,7 @@
 include "../re_used_file/check_session.php";
 checkUser();
 
+
 ?>
 
 <script>
@@ -66,6 +67,7 @@ checkUser();
 <?php
 include '../re_used_file/clean_input.php';
 include '../re_used_file/config.php';
+
 //This code is used to store the booking in the database
 if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] == 'Make_Booking')) {
 
@@ -104,18 +106,20 @@ include "../re_used_file/validations.php";
         $extras = cleanInput($extras);
     }
     //Get contact number
-    if (isset($_POST['mobile']) and !empty($_POST['mobile'])) {
-        $contact = cleanInput($_POST['mobile']);
-
-        if (preg_match('/[0-9]{3}[0-9]{3}[0-9]{4}|[0-9]{3}[0-9]{4}[0-9]{4}/' , $contact)) {
-            $contact = cleanInput($contact);
-            $contactNum = $contact;
-        } else {
-
+    if (isset($_POST['mobile']) and !empty($_POST['mobile'] and is_string($_POST['mobile']))) {
+        $contact = mobile_validation($_POST['mobile']);
+        if ($contact !== "") {
+            $contactNum = cleanInput($contact);
+        }else{
             $msg = "Invalid phone number";
             $error++;
         }
+    }else {
+
+        $msg = "Invalid phone number";
+        $error++;
     }
+
     if (isset($_POST['stdate']) and !empty($_POST['stdate'])) {
         $checkin = cleanInput($_POST['stdate']);
         //Make sure those dates are in the correct format
@@ -149,29 +153,7 @@ include "../re_used_file/header.php";
 include "../re_used_file/menu.php";
 
 ?>
-<script>
-    //date picker code
-    $(function() {
-        var st = document.getElementById('sdate');
-        $(st).datepicker({
-            numberOfMonths: 2,
-            showButtonPanel: true,
-            dateFormat: 'yy-mm-dd',
-            minDate: 'today',
 
-        });
-    });
-
-    $(function() {
-        var en = document.getElementById('edate');
-        $(en).datepicker({
-            numberOfMonths: 2,
-            showButtonPanel: true,
-            dateFormat: 'yy-mm-dd',
-            minDate: 'startdate + 1',
-        });
-    });
-</script>
 
 <body>
     <div id="make_a_booking" class="w3-container">
@@ -210,7 +192,29 @@ include "../re_used_file/menu.php";
 
         <form>
             <label for="checkin">Checkin date: </label>
+            <script>
+                //date picker code
+                $(function() {
+                    var st = document.getElementById('sdate');
+                    $(st).datepicker({
+                        numberOfMonths: 2,
+                        showButtonPanel: true,
+                        dateFormat: 'yy-mm-dd',
+                        minDate: 'today',
 
+                    });
+                });
+
+                $(function() {
+                    var en = document.getElementById('edate');
+                    $(en).datepicker({
+                        numberOfMonths: 2,
+                        showButtonPanel: true,
+                        dateFormat: 'yy-mm-dd',
+                        minDate: 'startdate + 1',
+                    });
+                });
+            </script>
             <input type="text" class="startDate" title="checkin" name="startdate" id="sdate" placeholder="2000-10-20" required/>
             <label for="checkout">Checkout date: </label>
             <input type="text" title="checkout" id="edate" name="enddate" placeholder="2000-10-20" required/>
