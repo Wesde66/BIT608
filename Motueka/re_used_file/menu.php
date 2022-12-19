@@ -2,7 +2,7 @@
     <div id="logo">
         <div id="logo_text">
 
-            <a href="http://localhost/index.php"><span class="w3-bar-item w3-button">Ongaonga Bed & Breakfast</span></a>
+            <a href="http://localhost/Motueka/index.php"><span class="w3-bar-item w3-button">Ongaonga Bed & Breakfast</span></a>
             <a href="http://localhost/Motueka/login.php" class="w3-bar-item w3-button">Login</a>
 
             <!--This is the dropdown for Bookings section-->
@@ -31,14 +31,14 @@
                     <?php
                     if (isAdmin()) {
                         echo '<a class="w3-bar-item w3-button" href="http://localhost/Motueka/rooms/addroom.php">Add rooms</a>';
-                        echo '<a class="w3-bar-item w3-button" href="http://localhost/Motueka/rooms/deleteroom.php">Delete a room</a>';
-                        echo '<a class="w3-bar-item w3-button" href="http://localhost/Motueka/rooms/editroom.php">Edit room details</a>';
+                        echo '<a class="w3-bar-item w3-button" href="http://localhost/Motueka/rooms/listrooms.php">Delete a room</a>';
+                        echo '<a class="w3-bar-item w3-button" href="http://localhost/Motueka/rooms/listrooms.php">Edit room details</a>';
                     }
                     ?>
 
                     <a class="w3-bar-item w3-button" href="http://localhost/Motueka/rooms/editoraddroomreview.php">Add or edit a room review</a>
                     <a class="w3-bar-item w3-button" href="http://localhost/Motueka/rooms/listrooms.php">List all rooms</a>
-                    <a class="w3-bar-item w3-button" href="http://localhost/Motueka/rooms/viewroom.php">View room details</a>
+                    <a class="w3-bar-item w3-button" href="http://localhost/Motueka/rooms/listrooms.php">View room details</a>
                 </div>
             </div>
             <!--This is the dropdown for Customers section-->
