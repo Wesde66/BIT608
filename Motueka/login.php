@@ -83,31 +83,47 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
 
                         ?>
 
-<section id="customer_login">
-    <form action="login.php" class="was-validated" name="login_profile" method="POST">
-        <div class="mb-3 mt-3">
-            <label for="email" class="form-label">Username:</label>
-            <input type="email" class="form-control" id="username" placeholder="Enter email" name="username" required>
+
+<!--Bootstrap Login-->
+<section class="vh-100 gradient-custom" id="customer_login">
+    <form action="login.php"  name="login_profile" method="POST">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                        <div class="card-body p-5 text-center">
+                            <div class="mb-md-5 mt-md-4 pb-5">
+                                <h2 class="fw-bold md-2 text-uppercase">Login</h2>
+                                <p class="text-white-50 mb-5">Please enter your login and password!</p>
+                                <div class="form-outline form-white mb-4">
+                                    <label for="username" class="form-label">Username:</label>
+                                    <input type="email" class="form-control" id="username" placeholder="Enter email" name="username" required>
+                                </div>
+                                <div class="form-outline form-white mb-4">
+                                        <label for="password" class="form-label">Password:</label>
+                                        <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" required>
+                                </div>
+                                <!--Need to create logic for if you forgot your password-->
+                                <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#">Forgot password?</a></p>
+                                <button class="btn btn-outline-light btn-lg px-5 " type="submit" name="submit" value="Login">Login</button>
+                                <div class="d-flex justify-content-center text-center mt-4 pt-1">
+                                    <a href="#" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
+                                    <a href="#" class="text-white"><i class="fab fa-twitter-f fa-lg mx-4 px-2"></i></a>
+                                    <a href="#" class="text-white"><i class="fab fa-google-f fa-lg"></i></a>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="mb-0">Don't have an account? <a href="http://localhost//Motueka/customers/registercustomer.php" class="text-white-50 fw-bold">Sign Up</a></p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="mb-3">
-            <label for="password" class="form-label">Password:</label>
-            <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" required>
-        </div>
-        <div class="form-check mb-3">
-            <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" name="remember" required> Please confirm terms and conditions
-            </label>
-        </div>
-        <button type="submit" name="submit" value="Login" class="btn btn-secondary">Submit</button>
     </form>
-    <div id="redirect_registration">
-        <h6>Please click here if you do not have an account</h6>
-        <br>
-        <button type="button" class="btn btn-secondary" onclick="document.location.href='new_customer_registration.php'">Register</button>
-    </div>
+
 </section>
-
-
 
 
 

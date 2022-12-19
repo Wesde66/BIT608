@@ -107,7 +107,7 @@ include "../re_used_file/validations.php";
     if (isset($_POST['mobile']) and !empty($_POST['mobile'])) {
         $contact = cleanInput($_POST['mobile']);
 
-        if (preg_match('/^d{10},|,d{11}$/' , $contact)) {
+        if (preg_match('/[0-9]{3}[0-9]{3}[0-9]{4}|[0-9]{3}[0-9]{4}[0-9]{4}/' , $contact)) {
             $contact = cleanInput($contact);
             $contactNum = $contact;
         } else {

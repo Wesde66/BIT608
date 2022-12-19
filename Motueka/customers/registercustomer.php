@@ -112,7 +112,7 @@ if (isset($_POST['submit']) and !empty($_POST['submit']) and ($_POST['submit'] =
 <?php
         }
     } else {
-        echo "<h2>$msg</h2>" . PHP_EOL;
+        //error messaged displayed in HTML
     }
     mysqli_close($db_connection); //close the connection once done
 }
@@ -121,48 +121,73 @@ include "../re_used_file/header.php";
 include "../re_used_file/menu.php";
 ?>
 
-<section id="new_customer_reg">
-    <form action="registercustomer.php" name="Registration_form" method="POST" class="was-validated">
-        <div class="row">
-            <div class="col">
-                <div class="mb-3 mt-3">
-                    <label for="firstname" class="form-label">First name:</label>
-                    <input type="text" class="form-control" id="firstname" placeholder="First Name" name="firstname" required />
+
+<!--Bootstrap new client register form-->
+    <section class="vh-100 bg-image"
+             style="background-image: url('http://localhost/Motueka/style/images/livingarea3.jpg');">
+
+        <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+            <div class="container h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                        <div class="card" style="border-radius: 15px;">
+                            <div class="card-body p-5">
+                                <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+                                <h6 id="errormessage" style="color: red"><?php echo $msg. PHP_EOL; ?></h6>
+
+                                <form action="registercustomer.php" name="Registration_form" method="POST" class="has-validation">
+
+                                    <div class="form-outline mb-4">
+                                        <input type="text" id="firstname"  placeholder="First name" name="firstname" class="form-control form-control-lg" required />
+                                        <label class="form-label" for="firstname">Your first name</label>
+                                        <input type="text" id="lastname" placeholder="Last name" name="lastname" class="form-control form-control-lg" required/>
+                                        <label class="form-label" for="lastname">Your last name</label>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <input type="email" id="email" placeholder="Enter email" name="email" class="form-control form-control-lg" required />
+                                        <label class="form-label" for="email">Your Email</label>
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <input type="tel" id="mobile" placeholder="Mobile number" name="mobile" pattern="([0-9]{3}[0-9]{3}[0-9]{4}|[0-9]{3}[0-9]{4}[0-9]{4})"
+                                               class="form-control form-control-lg" required/>
+                                        <label class="form-label" for="mobile">Your mobile</label>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <input type="password" id="password" placeholder="Enter password" name="password" class="form-control form-control-lg" required/>
+                                        <label class="form-label" for="password">Password</label>
+                                    </div>
+                                    <!--Need to create the logic to check passwords are the same-->
+                                    <div class="form-outline mb-4">
+                                        <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />
+                                        <label class="form-label" for="form3Example4cdg">Repeat your password</label>
+                                    </div>
+
+                                    <div class="form-check d-flex justify-content-center mb-5">
+                                        <input class="form-check-input me-2" type="checkbox"  name="remember" value="" id="remember" required/>
+                                        <label class="form-check-label" for="remember">
+                                            I agree all statements in <a href="http://localhost/Motueka/privacy.php" class="text-body"><u>Terms of service</u></a>
+                                        </label>
+                                    </div>
+
+                                    <div class="d-flex justify-content-center">
+                                        <button type="submit" name="submit"  value="Register"
+                                                class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                                    </div>
+
+                                    <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="http://localhost/Motueka/login.php"
+                                                                                                            class="fw-bold text-body"><u>Login here</u></a></p>
+
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="mb-3 mt-3">
-                    <label for="lastname" class="form-label">Last name:</label>
-                    <input type="text" class="form-control" id="lastname" placeholder="Last name" name="lastname" required />
-                </div>
-            </div>
         </div>
-        <div class="mb-3 mt-3">
-            <label for="email" class="form-label">Email:</label>
-            <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required />
-        </div>
-        <div class="mb-3 mt-3">
-            <label for="mobile" class="form-label">Mobile:</label>
-            <input type="tel" class="form-control" id="mobile" placeholder="Mobile number" name="mobile" required pattern="([0-9]{3}[0-9]{3}[0-9]{4}|[0-9]{3}[0-9]{4}[0-9]{4})" />
-        </div>
-        <div class="mb-3">
-            // We should add in here JS to make sure password meets certain criteria.
-            <label for="password" class="form-label">Password:</label>
-            <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" required />
-        </div>
-        <div class="form-check mb-3">
-            <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" name="remember" required> Please confirm terms and conditions
-            </label>
-        </div>
-        <button type="submit" name="submit" class="btn btn-secondary" value="Register">Submit</button>
-    </form>
-    <div id="redirect_registration">
-        <h6>Please click here if you do not have an account</h6>
-        <br>
-        <button type="submit" name="submit" class="btn btn-secondary" onclick="document.location.href='../login.php'">Existing customer login</button>
-    </div>
-</section>
+    </section>
 
 <?php
 include "../re_used_file/footer.php";
